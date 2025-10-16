@@ -14,10 +14,10 @@ model User {
   surName     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  password String?
+  password String
 
 memberships OrganizationMembership[]
-role Role @default(USER)
+role Role @default(guest)
 
   
 }
@@ -58,6 +58,7 @@ enum OrganizationMemberRole {
 }
 
 enum Role {
-  USER
-  ADMIN
+  guest
+  user
+  admin
 }

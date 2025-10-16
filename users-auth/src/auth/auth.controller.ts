@@ -1,4 +1,11 @@
-import { Body, Controller, HttpStatus, HttpException, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpStatus,
+  HttpException,
+  Post,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 
@@ -8,12 +15,17 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() data: LoginDto) {
-    const userToken = await this.authService.validateUser(data);
+    try {
+      const { token, user } = await this.authService.validateUser(data);
+      return { success: true, token, user };
+    } catch (error) {
+      if (error instanceof UnauthorizedException) {
+        throw error;
+      }
+      console.error('Error interno en login1:', error.message, error.stack);
 
-    if (!userToken) {
-      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+      console.error('Error interno en login:', error);
+      throw new HttpException('Error interno en login', HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return userToken;
   }
 }

@@ -105,3 +105,9 @@ npx prisma migrate reset
 npx prisma studio
 
 npx prisma generate
+
+
+manejar en consola de explorador de login
+localStorage.clear();
+localStorage.getItem("token");
+localStorage.getItem("role");
