@@ -19,7 +19,7 @@ export class UsersService {
         firstName: createUserDto.firstName,
         surName: createUserDto.surName,
         password: hashedPassword,
-        role: createUserDto.role ?? Role.user,
+        role: createUserDto.role ?? Role.guest,
       },
     });
   }

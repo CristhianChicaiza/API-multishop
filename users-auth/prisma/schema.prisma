@@ -43,9 +43,11 @@ user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 model Product {
   id        String   @id @default(uuid())
   codigo     String   @unique
+  image      String
   prenda     String
   marca      String
-  genero     String
+  categoria  String
+  color      String
   precio     Int
   cantidad   Int
   createdAt DateTime @default(now())

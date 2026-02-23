@@ -111,3 +111,8 @@ manejar en consola de explorador de login
 localStorage.clear();
 localStorage.getItem("token");
 localStorage.getItem("role");
+
+https://github.com/datmau/kruger-tech/tree/feat/AC/login-page-context/src/components/pages
+
+
+https://github.com/datmau/kruger-tech/tree/feat/AC/login-page-context/src/components/pages
